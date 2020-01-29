@@ -1,0 +1,51 @@
+{
+  "name": "census-story",
+  "version": "1.0.0",
+  "description": "Simple app to explain the importance of filling the census.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html --https --no-cache -p 3000",
+    "test": "jest",
+    "build": "parcel build src/index.js --no-cache --public-url '.' -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CityOfDetroit/census-story.git"
+  },
+  "keywords": [
+    "census",
+    "react",
+    "jest",
+    "story",
+    "narrative",
+    "geospacial"
+  ],
+  "author": "Edgar Montes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CityOfDetroit/census-story/issues"
+  },
+  "homepage": "https://github.com/CityOfDetroit/census-story#readme",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@fortawesome/fontawesome-free": "^5.12.0",
+    "babel-jest": "^24.9.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "jest": "^24.9.0",
+    "parcel-bundler": "^1.12.4",
+    "react-test-renderer": "^16.12.0",
+    "sass": "^1.24.4"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/styleMock.js"
+    }
+  }
+}

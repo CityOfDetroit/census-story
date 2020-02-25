@@ -11,7 +11,7 @@ function Locator(props) {
 
   const getLocation = () => {
     function success(position) {
-      setLoc({lon: position.coords.longitude, lat: position.coords.latitude});
+      setLoc({lng: position.coords.longitude, lat: position.coords.latitude});
       setLoader('');
     }
   

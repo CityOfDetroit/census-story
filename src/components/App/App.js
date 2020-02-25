@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import './App.scss';
+import Connector from '../Connector/Connector';
 import Loader from '../Loader/Loader';
 import Locator from '../Locator/Locator';
 import Panel from '../Panel/Panel';
@@ -8,11 +9,50 @@ function App() {
   const [loc, setLoc]       = useState();
   const [loader, setLoader] = useState('active');
 
+  const sendToCensus = () => {
+    Connector.start('get','https://us-central1-detroit-iet.cloudfunctions.net/getToken',null,(e)=>{(e.status >= 200 && e.status < 300) ? succToken(e) : errorToken(e)}, (e)=>{errorToken(e)});
+  }
+  const succToken = (resp) => {
+    resp.json().then(data =>{
+      console.log(data);
+      let params = [
+        {
+          "attributes" : {
+            "created_on" : Date.now()
+          },
+          "geometry" : {
+            "x" : loc.lng,
+            "y" : loc.lat
+          }
+        }
+      ];
+      let request = new Request(`https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Census_Tablet_Locations/FeatureServer/0/addFeatures?token=${data.access_token}&features=${encodeURIComponent(JSON.stringify(params))}&f=json`, {
+          method: 'POST',
+          body: '',
+          headers: new Headers(),
+          mode: 'cors',
+          cache: 'default'
+      });
+      fetch(request)
+      .then((res) => {
+          console.log(res);
+          window.location.replace("https://my2020census.gov/");
+      });
+    })
+    .catch((error) => {
+        error(error);
+    });
+  }
+
+  const errorToken = (resp) => {
+    console.log(e);
+  }
+
   return (
     <section className="App">
       <Locator state={{ loc: [loc, setLoc] , loader: [loader, setLoader]}}></Locator>
       <Loader loader={loader}></Loader>
-      <Panel location={loc} state={{ loader: [loader, setLoader] }}></Panel>
+      <Panel handleChange={sendToCensus} location={loc}state={{ loader: [loader, setLoader] }}></Panel>
     </section>
   );
 }

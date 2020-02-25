@@ -1,0 +1,39 @@
+@import "../../colors.scss";
+.Panel{
+    margin: auto;
+
+    .census-logos{
+        display: flex;
+
+        .img-container:last-child{
+            width: 36em;
+        }
+
+        .img-container{
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    .census-button{
+        width: 100%;
+        display: flex;
+        
+        button{
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: auto;
+            padding: 1em;
+            border: 0.25em solid $color-1;
+            color: $color-1;
+            font-size: 1.5em;
+            cursor: pointer;
+            background-color: transparent;          
+        }
+
+        button:hover{
+            background-color: $color-2;
+        }
+    }
+}

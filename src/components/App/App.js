@@ -18,7 +18,7 @@ function App() {
       let params = [
         {
           "attributes" : {
-            "created_on" : Date.now()
+            "user_input" : Date.now()
           },
           "geometry" : {
             "x" : loc.lng,
@@ -26,7 +26,7 @@ function App() {
           }
         }
       ];
-      let request = new Request(`https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Census_Tablet_Locations/FeatureServer/0/addFeatures?token=${data.access_token}&features=${encodeURIComponent(JSON.stringify(params))}&f=json`, {
+      let request = new Request(`https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Tablet_Locator/FeatureServer/0/addFeatures?token=${data.access_token}&features=${encodeURIComponent(JSON.stringify(params))}&f=json`, {
           method: 'POST',
           body: '',
           headers: new Headers(),

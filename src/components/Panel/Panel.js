@@ -8,11 +8,6 @@ function Panel(props) {
     loader: useState(0),
     ...(props.state || {})
   };
-  const drupalSettings = {
-    detroitmi:{
-      language: 'en'
-    }
-  };
   const language = drupalSettings.detroitmi.language;
 
   const sendToCensus = () => {

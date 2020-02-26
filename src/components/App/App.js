@@ -14,7 +14,6 @@ function App() {
   }
   const succToken = (resp) => {
     resp.json().then(data =>{
-      console.log(data);
       let params = [
         {
           "attributes" : {
@@ -35,17 +34,16 @@ function App() {
       });
       fetch(request)
       .then((res) => {
-          console.log(res);
           window.location.replace("https://my2020census.gov/");
       });
     })
     .catch((error) => {
-        error(error);
+        // error(error);
     });
   }
 
   const errorToken = (resp) => {
-    console.log(e);
+    // console.log(e);
   }
 
   return (
